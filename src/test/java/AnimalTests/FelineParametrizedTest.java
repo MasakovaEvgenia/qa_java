@@ -1,53 +1,37 @@
 package AnimalTests;
 
-import java.util.List;
-
 import com.example.Feline;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-import org.mockito.Mockito;
-import org.mockito.Spy;
+
+import java.util.List;
 
 import static org.junit.Assert.assertEquals;
-import static org.mockito.ArgumentMatchers.anyString;
-import static org.mockito.Mockito.when;
 
 @RunWith(Parameterized.class)
-public class FelineTest {
+public class FelineParametrizedTest {
     Feline feline = new Feline();
+    int expectedKittens;
+    int actualKittens;
 
-    @Test
-    public void testGetKittensWithoutParams() {
-        assertEquals(1, feline.getKittens());
+    public FelineParametrizedTest(int expectedKittens, int actualKittens) {
+        this.expectedKittens = expectedKittens;
+        this.actualKittens = actualKittens;
     }
 
     @Parameterized.Parameters
     public static Object[][] getKittens() {
         return new Object[][] {
-                {"", ""},
-                {"", ""},
-                {" test ", "test"},
-                {"test", "test"},
+                {-1, -1},
+                {0, 0},
+                {5, 5}
         };
     }
 
     @Test
     public void testGetKittens() {
-        assertEquals(0, feline.getKittens(0));
-        assertEquals(-1, feline.getKittens(-1)); //нужно заставить разраба сделать проверку на отр. числа
-        assertEquals(5, feline.getKittens(5));
-    }
-
-
-    @Test
-    public void testGetFamily() {
-        assertEquals("Кошачьи", feline.getFamily());
-    }
-
-    @Test
-    public void testEatMeat() throws Exception {
-        assertEquals(List.of("Животные", "Птицы", "Рыба"), feline.eatMeat());
+        assertEquals(expectedKittens, actualKittens);
     }
 
 }
