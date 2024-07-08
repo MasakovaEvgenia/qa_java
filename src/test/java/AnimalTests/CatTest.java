@@ -16,8 +16,8 @@ import static org.mockito.Mockito.when;
 
 public class CatTest {
     @Mock
-    Feline feline;
-    Cat cat;
+    private Feline feline;
+    private Cat cat;
 
     @Before
     public void setUp() {

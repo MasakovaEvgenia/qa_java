@@ -18,18 +18,21 @@ public class FelineTest {
 
     @Test
     public void testGetKittensWithoutParams() {
-        assertEquals(1, feline.getKittens());
+        int expectedKittensCount = 1;
+        assertEquals(expectedKittensCount, feline.getKittens());
     }
 
 
     @Test
     public void testGetFamily() {
-        assertEquals("Кошачьи", feline.getFamily());
+        String expectedFamily = "Кошачьи";
+        assertEquals(expectedFamily, feline.getFamily());
     }
 
     @Test
     public void testEatMeat() throws Exception {
-        assertEquals(List.of("Животные", "Птицы", "Рыба"), feline.eatMeat());
+        List<String> expectedFood = List.of("Животные", "Птицы", "Рыба");
+        assertEquals(expectedFood, feline.eatMeat());
     }
 
 }

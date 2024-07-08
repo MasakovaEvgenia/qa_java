@@ -12,10 +12,9 @@ import static org.mockito.Mockito.when;
 
 public class LionTest {
     @Mock
-    Feline feline;
-
-    Lion lionMale;
-    Lion lionFemale;
+    private Feline feline;
+    private Lion lionMale;
+    private Lion lionFemale;
 
     @Before
     public void setUp() throws Exception {
@@ -26,11 +25,10 @@ public class LionTest {
 
     @Test
     public void testIncorrectSex() throws Exception {
-        try{
+        Exception exception = assertThrows(Exception.class, () -> { // убрала try catch
             new Lion(feline, "неопределен");
-        } catch (Exception e){
-            assertEquals("Используйте допустимые значения пола животного - самец или самка", e.getMessage());
-        }
+        });
+        assertEquals("Используйте допустимые значения пола животного - самец или самка", exception.getMessage());
     }
 
     @Test
